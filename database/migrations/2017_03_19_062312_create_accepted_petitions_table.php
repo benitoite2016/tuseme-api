@@ -15,11 +15,11 @@ class CreateAcceptedPetitionsTable extends Migration
     {
         Schema::create('accepted_petitions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('leader_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
             $table->integer('petition_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('leader_id')->references('id')->on('leaders')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('petition_id')->references('id')->on('petitions')->onDelete('cascade');
         });
     }

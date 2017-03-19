@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKayasTable extends Migration
+class CreateOpinionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateKayasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kayas', function (Blueprint $table) {
+        Schema::create('opinions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('title');
+            $table->string('description');
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('leader_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('leader_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->ondelete('cascade');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateKayasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kayas');
+        Schema::dropIfExists('opinions');
     }
 }
