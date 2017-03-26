@@ -8,4 +8,6 @@ class Leader extends Model
 {
     //
     protected $fillable = ['role'];
+
+
 }
