@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\AnouncementController;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
@@ -31,5 +32,9 @@ class User extends Authenticatable
     ];
     public function reports(){
       return  $this->hasMany(Report::class);
+    }
+    
+    public function anouncement(){
+        return $this->hasMany(Anouncement::class);
     }
 }
