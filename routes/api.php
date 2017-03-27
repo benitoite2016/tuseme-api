@@ -18,3 +18,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route:: post('/report','ReportController@report');
+Route::get('/report','ReportController@index');
+Route::post('/announcement','AnnouncementController@store');
+Route::get('/announcement', 'AnnouncementController@index');
+Route::get('/petition','PetitionController@index');
+Route::post('/petition','PetitionController@store');
+Route::get('/users','UserController@index');
+Route::post('/users','UserController@store');

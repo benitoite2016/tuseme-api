@@ -9,6 +9,15 @@ use App\Models\Report;
 class ReportController extends Controller
 {
 
+
+    public function index(Request $request){
+
+        $reports = Report::all();
+
+        return $reports;
+
+    }
+
     public function report(StoreReportRequest  $request){
 
 
@@ -21,4 +30,6 @@ class ReportController extends Controller
 
     $report->save();
 }
+
+
 }
