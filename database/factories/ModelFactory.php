@@ -157,6 +157,9 @@ $factory->define(App\Models\Announcement::class, function (Faker\Generator $fake
          'category_name' => $categories[rand(0,3)],
          'user_id' => function(){
                 return factory(App\Models\User::class)->create()->id;
+         },
+         'announcement_id' => function(){
+             return factory(App\Models\Announcement::class)->create()->id;
          }
      ];
  });
