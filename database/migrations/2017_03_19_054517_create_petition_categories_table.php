@@ -27,6 +27,6 @@ class CreatePetitionCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petiton_categories');
+        Schema::dropIfExists('petition_categories');
     }
 }

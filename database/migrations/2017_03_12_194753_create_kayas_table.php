@@ -18,11 +18,10 @@ class CreateKayasTable extends Migration
         Schema::create('kayas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('user_id')->unsigned()->index();
+            $table->string('details');
             $table->integer('street_id')->unsigned()->index();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('street_id')->references('id')->on('streets')->onDelete('cascade');
+            $table->foreign('street_id')->references('id')->on('streets');
         });
     }
 

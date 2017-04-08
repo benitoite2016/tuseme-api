@@ -21,11 +21,11 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'phone_number' => $faker->e164PhoneNumber,
         'birth_day' => $faker->dateTimeThisCentury->format('Y-m-d'),
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' =>'secret',
         'remember_token' => str_random(10),
         'role'=>rand(1,2),
-        'street_id' => function(){
-            return factory(App\Models\Street::class)->create()->id;
+        'kaya_id' => function(){
+            return factory(App\Models\Kaya::class)->create()->id;
         }
     ];
 });
@@ -39,19 +39,7 @@ $factory->define(App\Models\Leader::class,function (Faker\Generator $faker){
     ];
 });
 
-        /*this seeds the Kayas*/
- $factory->define(App\Models\Kaya::class, function (Faker\Generator $facker){
-     return [
-         'name' => $facker->name,
-         'user_id' => function(){
-            return factory(App\Models\User::class)->create()->id;
-         },
-         'street_id' => function(){
-             return factory(App\Models\Street::class)->create()->id;
-         },
 
-     ];
- });
 
     /*seeding streets details*/
    $factory->define(App\Models\StreetDetails::class, function (Faker\Generator $facker){
@@ -75,6 +63,17 @@ $factory->define(App\Models\Street::class, function (Faker\Generator $facker){
         },
         'admin_id' => rand(1,2)
 
+    ];
+});
+
+/*this seeds the Kayas*/
+$factory->define(App\Models\Kaya::class, function (Faker\Generator $facker){
+    return [
+        'name' => $facker->name,
+        'details'=>$facker->text,
+        'street_id' => function(){
+            return factory(App\Models\Street::class)->create()->id;
+        },
     ];
 });
 

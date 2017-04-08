@@ -24,4 +24,5 @@ Route::get('/announcement', 'AnnouncementController@index');
 Route::get('/petition','PetitionController@index');
 Route::post('/petition','PetitionController@store');
 Route::get('/users','UserController@index');
-Route::post('/users','UserController@store');
+Route::post('/register','UserController@store');
+Route::post('/login','UserController@login');

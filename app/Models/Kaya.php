@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Kaya extends Model
 {
     //
-    protected $fillable = ['name'];
+    protected $fillable = ['name','details'];
+
+    public  function users(){
+        return $this->hasMany(User::class);
+    }
+
+
 }

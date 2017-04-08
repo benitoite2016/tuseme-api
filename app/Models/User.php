@@ -32,4 +32,8 @@ class User extends Authenticatable
     public function reports(){
       return  $this->hasMany(Report::class);
     }
+
+    public function kaya(){
+        return $this->belongsTo(Kaya::class);
+    }
 }

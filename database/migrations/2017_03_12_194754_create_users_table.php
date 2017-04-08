@@ -22,11 +22,11 @@ class CreateUsersTable extends Migration
             $table->date('birth_day');
             $table->integer('role');
             $table->string('password');
-            $table->integer('street_id')->unsigned()->index();
+            $table->integer('kaya_id')->unsigned()->index();
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('street_id')->references('id')->on('streets')->onDelete('cascade');
+            $table->foreign('kaya_id')->references('id')->on('kayas');
         });
     }
 

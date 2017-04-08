@@ -19,7 +19,7 @@ class CreateStreetsTable extends Migration
             $table->integer('admin_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->foreign('street_details_id')->references('id')->on('street_details')->onDelete('cascade');
         });
     }
