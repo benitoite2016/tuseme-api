@@ -10,7 +10,6 @@ class AnnouncementController extends Controller
 {
     //
 
-
     public function index(Request $request){
 
         $announcements = Announcement::all();

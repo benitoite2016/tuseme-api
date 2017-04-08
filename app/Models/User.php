@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\AnouncementController;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
