@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReportRequest;
+use App\Http\Requests\UpdateReportRequest;
 use App\Models\Report;
 
 class ReportController extends Controller
@@ -30,6 +31,20 @@ class ReportController extends Controller
 
     $report->save();
 }
+    
+    public function show(Report $report){
+        return $report;
+    }
 
+public function update(UpdateReportRequest $request,Report $report ){
+
+
+     $report->title=$request->get('title',$report->title);
+    $report->description=$request->description;
+    $report->save();
+}
+  public function destroy(Report $report){
+  
+  }
 
 }

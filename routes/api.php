@@ -19,8 +19,13 @@ Route::get('/user', function (Request $request) {
 
 Route:: post('/report','ReportController@report');
 Route::get('/report','ReportController@index');
+Route::get('/report/{report}','ReportController@show');
+Route::patch('/report/{report}','ReportController@update');
+Route::delete('/report/{report}','ReportController@destroy');
+
 Route::post('/announcement','AnnouncementController@store');
 Route::get('/announcement', 'AnnouncementController@index');
+Route::get('/announcement/{id}/edit', 'AnnouncementController@edit');
 Route::get('/petition','PetitionController@index');
 Route::post('/petition','PetitionController@store');
 Route::get('/users','UserController@index');
