@@ -37,4 +37,7 @@ class User extends Authenticatable
     public function kaya(){
         return $this->belongsTo(Kaya::class);
     }
+
+
+
 }

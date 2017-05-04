@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReportRequest;
 use App\Http\Requests\UpdateReportRequest;
 use App\Models\Report;
+use App\Transformers\ReportTransformer;
+
 
 class ReportController extends Controller
 {
@@ -17,8 +20,17 @@ class ReportController extends Controller
 
         return $reports;
 
+        return fractal()
+            ->item($announcement)
+            ->transformWith(new AnnouncementTransformer)
+            ->toArray();
+
     }
 
+    /**
+     * @param StoreReportRequest $request
+     * @return array
+     */
     public function report(StoreReportRequest  $request){
 
 
@@ -30,10 +42,22 @@ class ReportController extends Controller
 
 
     $report->save();
-}
+
+
+        return fractal()
+            ->item($report)
+            ->transformWith(new ReportTransformer)
+            ->toarray();
+
+    }
     
     public function show(Report $report){
         return $report;
+
+        return fractal()
+            ->item($announcement)
+            ->transformWith(new AnnouncementTransformer)
+            ->toArray();
     }
 
 public function update(UpdateReportRequest $request,Report $report ){
@@ -42,6 +66,11 @@ public function update(UpdateReportRequest $request,Report $report ){
      $report->title=$request->get('title',$report->title);
     $report->description=$request->description;
     $report->save();
+    return fractal()
+        ->item($report)
+        ->transformWith(new ReportTransformer)
+        ->toarray();
+
 }
   public function destroy(Report $report){
   
